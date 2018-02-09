@@ -10,7 +10,14 @@
 #define config_h
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
 #include <iomanip>
+#include <unistd.h>
+
+// Flags: -lboost_program_options
+#include <boost/program_options.hpp>
 
 
 #endif /* config_h */
