@@ -11,7 +11,7 @@
 #include "libs/length.hpp"
 
 #define hr() (std::cout << ("===================================") << std::endl)
-#define println(a) (std::cout << std::setprecision(2) << (a) << std::endl)
+#define println(a, b) (std::cout << std::setprecision((b)) << (a) << std::endl)
 #define console(a) (std::cout << (a) << std::endl)
 
 namespace po = boost::program_options;
@@ -46,7 +46,8 @@ int main(int argc, char *argv[]) {
         po::notify(vm);
         
         if (vm.count("help")) {
-            console(desc);
+            std::string msg = "Usage: ./sample02 convert [CFK] value";
+            console(msg);
             return 1;
         }
         
@@ -58,18 +59,18 @@ int main(int argc, char *argv[]) {
             if (target == "C") {
                 conv::temp::celsius<double> c(value);
                 std::cout << std::fixed;
-                println(c.to_f());
-                println(c.to_k());
+                println(c.to_f(), 2);
+                println(c.to_k(), 2);
             } else if (target == "F") {
                 conv::temp::fahrenheit<double> f(value);
                 std::cout << std::fixed;
-                println(f.to_c());
-                println(f.to_k());
+                println(f.to_c(), 2);
+                println(f.to_k(), 2);
             } else if (target == "K") {
                 conv::temp::kelvin<double> k(value);
                 std::cout << std::fixed;
-                println(k.to_c());
-                println(k.to_f());
+                println(k.to_c(), 2);
+                println(k.to_f(), 2);
             }
         }
         
