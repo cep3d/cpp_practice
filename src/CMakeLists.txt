@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+file(GLOB SRCS *.cpp)
+find_package(Boost ${Boost_VERSION} COMPONENTS chrono)
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+  add_executable(${PROJECT_NAME} ${SRCS})
+  target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
+endif()
